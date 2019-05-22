@@ -85,6 +85,9 @@ router.post('/', function (req, res, next) {
           return console.error('upload failed:', err);
         }
         console.log('Upload successful!  Server responded with:', body);
+
+        body=JSON.parse(JSON.stringify(body));
+
         return res.json({
           status: true,
           "body": body,
@@ -93,7 +96,7 @@ router.post('/', function (req, res, next) {
     }
     else {
       console.log('로그찍기용임');
-      
+
       return res.json({
         status: true,
         nothing: "nothing",
