@@ -88,16 +88,16 @@ router.post('/', function (req, res, next) {
 
         body=JSON.parse(JSON.stringify(body));
         console.log('Upload successful!  Server responded with:', body);
-        
+
         return res.json({
-          status: true,
-          "body": body,
+          transcript: body.results.transcript,
+        //  confidence: body.results.confidence,
         });
       });
     }
     else {
       console.log('로그찍기용임');
-
+      
       return res.json({
         status: true,
         nothing: "nothing",
