@@ -74,7 +74,7 @@ router.post('/', function (req, res, next) {
 
     var formData = {
 
-      media: fs.createReadStream(__dirname +realpath),
+      media: fs.createReadStream('./'+realpath),
       name: 'soki_jjang',
      
     };
