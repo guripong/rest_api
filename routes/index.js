@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const multiparty = require('multiparty');
+const request = require('request');
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
@@ -22,8 +23,8 @@ router.post('/', function (req, res, next) {
 
   form.parse(req);
   form.on('field', (name, value) => {
-    console.log('name',name);
-    console.log('value',value);
+    console.log('name', name);
+    console.log('value', value);
     //console.log(`name:`,name,`value`,value);
     if (name == 'fakepath') {
       fakepath = value;
@@ -67,15 +68,29 @@ router.post('/', function (req, res, next) {
   form.on('close', () => {
     console.log(`close!!!`);
     //const fileName = './resources/ManualTest.wav';
-    console.log('fname:',fname);
-    console.log('realpath:',realpath);
+    console.log('fname:', fname);
+    console.log('realpath:', realpath);
 
-     return res.json({
-      status: true,
-      "fname": fname,
-      "realpath":realpath,
+    var formData = {
+
+      media: fs.createReadStream(__dirname +realpath),
+      name: 'soki_jjang',
+     
+    };
+
+    request.post({ url: 'http://54.180.21.15:5555', formData: formData }, function optionalCallback(err, httpResponse, body) {
+      if (err) {
+        return console.error('upload failed:', err);
+      }
+      console.log('Upload successful!  Server responded with:', body);
+      return res.json({
+        status: true,
+        "body": body,
+      });
     });
-   
+
+
+
   });//form.on close
 });
 module.exports = router;
