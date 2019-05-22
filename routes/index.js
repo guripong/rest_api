@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const multiparty = require('multiparty');
 const request = require('request');
+const fs = require('fs');
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
