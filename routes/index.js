@@ -84,10 +84,11 @@ router.post('/', function (req, res, next) {
         if (err) {
           return console.error('upload failed:', err);
         }
-        console.log('Upload successful!  Server responded with:', body);
+       
 
         body=JSON.parse(JSON.stringify(body));
-
+        console.log('Upload successful!  Server responded with:', body);
+        
         return res.json({
           status: true,
           "body": body,
