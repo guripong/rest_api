@@ -87,10 +87,10 @@ router.post('/', function (req, res, next) {
        
 
         body=JSON.parse(JSON.stringify(body));
-        console.log('Upload successful!  Server responded with:', body);
+        console.log('stt에서받아옴:', body);
 
         return res.json({
-          transcript: body.results.transcript,
+          body:body,
         //  confidence: body.results.confidence,
         });
       });
