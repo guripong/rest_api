@@ -69,27 +69,36 @@ router.post('/', function (req, res, next) {
   form.on('close', () => {
     console.log(`close!!!`);
     //const fileName = './resources/ManualTest.wav';
-    console.log('fname:', fname);
-    console.log('realpath:', realpath);
+    
+    if (fname && realpath) {
+      console.log('fname:', fname);
+      console.log('realpath:', realpath);
+      var formData = {
 
-    var formData = {
+        media: fs.createReadStream('./' + realpath),
+        name: 'soki_jjang',
 
-      media: fs.createReadStream('./'+realpath),
-      name: 'soki_jjang',
-     
-    };
+      };
 
-    request.post({ url: 'http://54.180.21.15:5555', formData: formData }, function optionalCallback(err, httpResponse, body) {
-      if (err) {
-        return console.error('upload failed:', err);
-      }
-      console.log('Upload successful!  Server responded with:', body);
+      request.post({ url: 'http://54.180.21.15:5555', formData: formData }, function optionalCallback(err, httpResponse, body) {
+        if (err) {
+          return console.error('upload failed:', err);
+        }
+        console.log('Upload successful!  Server responded with:', body);
+        return res.json({
+          status: true,
+          "body": body,
+        });
+      });
+    }
+    else {
+      console.log('로그찍기용임');
+      
       return res.json({
         status: true,
-        "body": body,
+        nothing: "nothing",
       });
-    });
-
+    }
 
 
   });//form.on close
