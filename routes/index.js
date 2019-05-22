@@ -90,8 +90,8 @@ router.post('/', function (req, res, next) {
         console.log('stt에서받아옴:', body);
 
         return res.json({
-          body:body,
-        //  confidence: body.results.confidence,
+          status:true,
+          body: body,
         });
       });
     }
