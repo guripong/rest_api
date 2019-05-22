@@ -86,7 +86,7 @@ router.post('/', function (req, res, next) {
         }
        
 
-        body=JSON.parse(JSON.stringify(body));
+        body=JSON.parse(JSON.stringify(body.results));
         console.log('stt에서받아옴:', body);
 
         return res.json({
