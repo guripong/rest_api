@@ -85,14 +85,10 @@ router.post('/', function (req, res, next) {
           return console.error('upload failed:', err);
         }
        
-
         body=JSON.parse(body);
-
         console.log('stt에서받아옴:', body);
 
-        return res.json({
-          body: body,
-        });
+        return res.json(body);
       });
     }
     else {
