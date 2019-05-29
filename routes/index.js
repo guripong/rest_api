@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 
 
 
-router.post('/', function (req, res, next) {
+router.post('/GoogleSTT', function (req, res, next) {
   console.log('post왔당');
 
 
@@ -31,6 +31,7 @@ router.post('/', function (req, res, next) {
       fakepath = value;
     }
   });
+  
   form.on('file', (name, file) => {
     //console.log('파일 들어옴');
     console.log(`파일:`, file.originalFilename);
